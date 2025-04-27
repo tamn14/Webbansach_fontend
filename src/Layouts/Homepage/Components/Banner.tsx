@@ -12,7 +12,7 @@ const Banner = () => {
   useEffect(() => {
     get3Book()
       .then((sachData) => {
-        setDanhSachQuyenSach(sachData);
+        setDanhSachQuyenSach(sachData.ketqua);
         setDangTaiDuLieu(false);
       })
       .catch((error) => {
@@ -54,7 +54,7 @@ const Banner = () => {
   }
 
   return (
-    <div className="container col-10">
+    <div className="container col-10 mt-3">
       <div className="row mt-4 align-items-center">
         {/* LEFT TEXT */}
         <div className="col-lg-6 text-lg-start text-center mb-5 mb-lg-0">

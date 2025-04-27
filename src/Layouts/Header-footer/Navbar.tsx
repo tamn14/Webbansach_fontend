@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link, Links } from "react-router-dom";
 
-const Navbar = () => {
+interface props {
+
+  setTuKhoaTimKiem: (value: string) => void;
+}
+const Navbar = ({ setTuKhoaTimKiem }: props) => {
+  const [inputText, setInputText] = useState("");
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setTuKhoaTimKiem(inputText);
+  }
   return (
     <div className="container-fluid p-0">
       {/* Navbar */}
@@ -31,46 +41,20 @@ const Navbar = () => {
           >
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <Link className="nav-link active" aria-current="page" to="/">
                   Trang chủ
-                </a>
+                </Link>
               </li>
               <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Thể loại sách
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Thể loại 1
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Thể loại 2
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Thể loại 3
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Các thể loại khác
-                    </a>
-                  </li>
-                </ul>
-              </li>
+              <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Thể loại sách
+              </Link>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown1">
+                <li><Link className="dropdown-item" to="/1">Thể loại 1</Link></li>
+                <li><Link className="dropdown-item" to="/2">Thể loại 2</Link></li>
+                <li><Link className="dropdown-item" to="/3">Thể loại 3</Link></li>
+              </ul>
+            </li>
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
@@ -118,12 +102,12 @@ const Navbar = () => {
                 </span>
               </a>
               {/* Auth */}
-              <a href="#" className="btn btn-outline-primary btn-sm">
+              <Link to="/DangKyNguoiDung" className="btn btn-outline-primary btn-sm">
                 Login
-              </a>
-              <a href="#" className="btn btn-primary btn-sm">
+              </Link>
+              <Link to="/DangKyNguoiDung" className="btn btn-primary btn-sm">
                 Sign Up
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -132,12 +116,18 @@ const Navbar = () => {
       {/* Header with search */}
       <header className="py-4 bg-white border-bottom shadow-sm">
         <div className="container d-flex flex-wrap align-items-center justify-content-between">
-          <form className="d-flex align-items-center ms-auto" role="search">
+          <form
+            className="d-flex align-items-center ms-auto"
+            role="search"
+            onSubmit={handleSubmit}
+          >
             <input
               type="search"
               className="form-control form-control-sm me-2"
               placeholder="Search books..."
               aria-label="Search"
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
             />
             <button
               className="btn btn-outline-secondary btn-sm"
@@ -146,6 +136,8 @@ const Navbar = () => {
               <i className="fa fa-search"></i>
             </button>
           </form>
+
+
         </div>
       </header>
     </div>
