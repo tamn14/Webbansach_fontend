@@ -102,7 +102,7 @@ const Navbar = ({ setTuKhoaTimKiem }: props) => {
                 </span>
               </a>
               {/* Auth */}
-              <Link to="/DangKyNguoiDung" className="btn btn-outline-primary btn-sm">
+              <Link to="/DangNhap" className="btn btn-outline-primary btn-sm">
                 Login
               </Link>
               <Link to="/DangKyNguoiDung" className="btn btn-primary btn-sm">

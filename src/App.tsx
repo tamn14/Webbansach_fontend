@@ -6,6 +6,10 @@ import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-rou
 import About from "./Layouts/About/About";
 import ChiTietSach from "./Layouts/Prouducts/ChiTietSanPham";
 import DangKyNguoiDung from "./Layouts/Users/DangKyNguoiDung";
+import KichHoatTaiKhoan from "./Layouts/Users/KichHoatTaiKhoan";
+import DangNhap from "./Layouts/Users/DangNhap";
+import Test from "./Layouts/Users/Test";
+import SachForm from "./Layouts/Admin/SachForm";
 function App() {
   const [tuKhoaTimKiem, setTuKhoaTimKiem] = useState('');
 
@@ -19,6 +23,10 @@ function App() {
           <Route path="/sach/:maSach" element={<ChiTietSach />} />
           <Route path="/about" element={<About />} />
           <Route path="/DangKyNguoiDung" element={<DangKyNguoiDung />} />
+          <Route path="/kichhoat/:email/:maKichHoat" element={<KichHoatTaiKhoan />} />
+          <Route path="/DangNhap" element={<DangNhap />} />
+          <Route path="/test" element={<Test />} />
+          <Route path="/admin/sachForm" element={<SachForm />} />
         </Routes>
         <Footer />
       </div>

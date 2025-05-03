@@ -7,3 +7,11 @@
     height: 100%;
     object-fit: cover;
   }
+
+  .divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
